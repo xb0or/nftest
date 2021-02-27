@@ -80,7 +80,9 @@ if [ $? -ne 0 ];then
     echo -e "\033[31mPlease install curl\033[0m";
     exit;
 fi
-echo -e "\034[34Netflix测试脚本 版本V1.0\034[0m";
+
+echo -e "\033[36m Netflix测试脚本 by：@kedou2019\033[0m"
+
 
 echo " ** 正在测试IPv4解锁情况";
 check4=`ping 1.1.1.1 -c 1 2>&1`;
