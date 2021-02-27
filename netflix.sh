@@ -81,7 +81,7 @@ if [ $? -ne 0 ];then
     exit;
 fi
 
-echo -e "\033[36m Netflix测试脚本 by：@kedou2019\033[0m"
+echo -e "\033[36m Netflix测试脚本 \033[0m"
 
 
 echo " ** 正在测试IPv4解锁情况";
