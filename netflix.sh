@@ -87,7 +87,7 @@ yt_ipv4(){
 if [ ! -n "$area" ]; then
     area=不显示
 fi
-echo -e "\033[32m 你的油管角标: ${area}\033[0m";
+echo -e "\033[32m你的油管角标: ${area}\033[0m";
 }
 yt_ipv6(){
    #油管IPV6区域测试
@@ -95,7 +95,7 @@ yt_ipv6(){
 if [ ! -n "$area" ]; then
     area=不显示
 fi
-echo -e "\033[32m 你的油管角标: ${area}\033[0m";
+echo -e "\033[32m你的油管角标: ${area}\033[0m";
 }
 
 
