@@ -85,7 +85,7 @@ yt_ipv4(){
    #油管IPV4区域测试
    area=$(curl -4 -s https://www.youtube.com/red | sed 's/,/\n/g' | grep countryCode | cut -d '"' -f4)
 if [ ! -n "$area" ]; then
-    area=“不显示”
+    area=不显示
 fi
 echo -e "\033[32m 你的油管角标: ${area}\033[0m";
 }
@@ -93,7 +93,7 @@ yt_ipv6(){
    #油管IPV6区域测试
    area=$(curl -6 -s https://www.youtube.com/red | sed 's/,/\n/g' | grep countryCode | cut -d '"' -f4)
 if [ ! -n "$area" ]; then
-    area=“不显示”
+    area=不显示
 fi
 echo -e "\033[32m 你的油管角标: ${area}\033[0m";
 }
