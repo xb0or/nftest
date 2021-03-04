@@ -84,17 +84,17 @@ fi
 yt_ipv4(){
    #油管IPV4区域测试
    area=$(curl -6 -s https://www.youtube.com/red | sed 's/,/\n/g' | grep countryCode | cut -d '"' -f4)
-    if [[ "$region" == ""]];then
-       area="US";
-    fi
+ #   if [[ "$region" == ""]];then
+ #      area="US";
+ #   fi
 echo -e "\033[32m 你的油管区域: ${area}\033[0m";
 }
 yt_ipv6(){
    #油管IPV6区域测试
    area=$(curl -6 -s https://www.youtube.com/red | sed 's/,/\n/g' | grep countryCode | cut -d '"' -f4)
-    if [[ "$region" == ""]];then
-       area="US";
-    fi
+#    if [[ "$region" == ""]];then
+ #      area="US";
+ #   fi
 echo -e "\033[32m 你的油管区域: ${area}\033[0m";
 }
 
