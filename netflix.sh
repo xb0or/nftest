@@ -102,7 +102,7 @@ echo -e "\033[36m bash <(curl -sSL "https://raw.githubusercontent.com/xb0or/nfte
 
 echo " ** 正在测试 IPv4 解锁情况";
 check4=`ping 1.1.1.1 -c 1 2>&1`;
-if [[ "$check4" != *"unreachable"* ]] && [[ "$check4" != *"Unreachable"* ]];then
+if [[ "$check4" != *"received"* ]] && [[ "$check4" != *"transmitted"* ]];then
     echo -e "\033[34m当前主机不支持IPv4,跳过...\033[0m";
 else
 test_ipv4
@@ -111,7 +111,7 @@ fi
 
 echo " ** 正在测试 IPv6 解锁情况";
 check6=`ping6 240c::6666 -c 1 2>&1`;
-if [[ "$check6" != *"unreachable"* ]] && [[ "$check6" != *"Unreachable"* ]];then
+if [[ "$check6" != *"received"* ]] && [[ "$check6" != *"transmitted"* ]];then
 echo -e "\033[34m当前主机不支持IPv6,跳过...\033[0m";    
 
 else
