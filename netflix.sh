@@ -81,11 +81,6 @@ if [ $? -ne 0 ];then
 fi
 
 
-   #油管IPV4区域测试
-   area=$(curl -4 -s https://www.youtube.com/red | sed 's/,/\n/g' | grep countryCode | cut -d '"' -f4)
-    if [[ "$region" == ""]];then
-       region="US";
-    fi
 yt_ipv4(){
    #油管IPV4区域测试
    area=$(curl -6 -s https://www.youtube.com/red | sed 's/,/\n/g' | grep countryCode | cut -d '"' -f4)
