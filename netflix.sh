@@ -18,9 +18,13 @@ function test_ipv4() {
     fi
     
     result1=`curl -4sL "https://www.netflix.com/title/70143836" 2>&1`;
-
+    result2=`curl -4sL "https://www.netflix.com/title/80027042" 2>&1`;
+    result3=`curl -4sL "https://www.netflix.com/title/70140425" 2>&1`;
+    result4=`curl -4sL "https://www.netflix.com/title/70283261" 2>&1`;
+    result5=`curl -4sL "https://www.netflix.com/title/70143860" 2>&1`;
+    result6=`curl -4sL "https://www.netflix.com/title/70202589" 2>&1`;
     
-    if [[ "$result1" == *"page-404"* ]];then
+    if [[ "$result1" == *"page-404"* ]] && [[ "$result2" == *"page-404"* ]] && [[ "$result3" == *"page-404"* ]] && [[ "$result4" == *"page-404"* ]] && [[ "$result5" == *"page-404"* ]] && [[ "$result6" == *"page-404"* ]];then
         echo -e "\033[33m你的IP可以打开Netflix 但是仅解锁自制剧\033[0m";
         return;
     fi
@@ -54,9 +58,13 @@ function test_ipv6() {
     fi
     
     result1=`curl -6sL "https://www.netflix.com/title/70143836" 2>&1`;
+    result2=`curl -6sL "https://www.netflix.com/title/80027042" 2>&1`;
+    result3=`curl -6sL "https://www.netflix.com/title/70140425" 2>&1`;
+    result4=`curl -6sL "https://www.netflix.com/title/70283261" 2>&1`;
+    result5=`curl -6sL "https://www.netflix.com/title/70143860" 2>&1`;
+    result6=`curl -6sL "https://www.netflix.com/title/70202589" 2>&1`;
     
-    
-    if [[ "$result1" == *"page-404"* ]];then
+    if [[ "$result1" == *"page-404"* ]] && [[ "$result2" == *"page-404"* ]] && [[ "$result3" == *"page-404"* ]] && [[ "$result4" == *"page-404"* ]] && [[ "$result5" == *"page-404"* ]] && [[ "$result6" == *"page-404"* ]];then
         echo -e "\033[33m你的IP可以打开Netflix 但是仅解锁自制剧\033[0m";
         return;
     fi
@@ -102,7 +110,7 @@ echo -e "\033[32m你的油管角标: ${area}\033[0m";
 
 #目录
 
-echo -e "\033[36m 测试脚本 V2.0 \033[0m"
+echo -e "\033[36m 测试脚本 V2.5 \033[0m"
 echo -e "\033[36m GitHub：https://github.com/xb0or/nftest \033[0m"
 echo -e "\033[36m bash <(curl -sSL "https://raw.githubusercontent.com/xb0or/nftest/main/netflix.sh") \033[0m"
 
