@@ -106,11 +106,16 @@ fi
 echo -e "\033[32m你的油管角标: ${area}\033[0m";
 }
 
+steam_v4(){
+   area=$(curl -s https://store.steampowered.com/app/761830 | grep priceCurrency | cut -d '"' -f4)
+   echo -e "\033[32m你的 STEAM 货币为（仅限IPV4）: ${area}\033[0m";
+
+}
 
 
 #目录
 
-echo -e "\033[36m 测试脚本 V2.5 \033[0m"
+echo -e "\033[36m 测试脚本 V2.6 \033[0m"
 echo -e "\033[36m GitHub：https://github.com/xb0or/nftest \033[0m"
 echo -e "\033[36m bash <(curl -sSL "https://raw.githubusercontent.com/xb0or/nftest/main/netflix.sh") \033[0m"
 
@@ -121,6 +126,7 @@ if [[ "$check4" != *"received"* ]] && [[ "$check4" != *"transmitted"* ]];then
 else
 test_ipv4
 yt_ipv4
+steam_v4
 fi
 
 echo " ** 正在测试 IPv6 解锁情况";
