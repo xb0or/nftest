@@ -137,7 +137,7 @@ echo -e "DisneyPlus：";
         echo -n -e "${Font_Green}恭喜，你的IP支持迪士尼+${Font_Suffix}\n";
         return;
     fi
-echo -n -e "\r ${Font_Red}很遗憾 你的IP不支持 DisneyPlus${Font_Suffix}\n";    
+echo -n -e "\r ${Font_Red}很遗憾，你的IP不支持迪士尼+${Font_Suffix}\n";
     return;
 }
 
