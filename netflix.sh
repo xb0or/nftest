@@ -91,7 +91,7 @@ fi
 
 yt_ipv4(){
    #油管IPV4区域测试
-   area=$(curl -4 -s https://www.youtube.com/red | sed 's/,/\n/g' | grep countryCode | cut -d '"' -f4)
+   area=$(curl --connect-timeout 10 -4s https://www.youtube.com/red | sed 's/,/\n/g' | grep countryCode | cut -d '"' -f4)
 if [ ! -n "$area" ]; then
     area=不显示
 fi
@@ -99,7 +99,7 @@ echo -e "\033[32m你的油管角标: ${area}\033[0m";
 }
 yt_ipv6(){
    #油管IPV6区域测试
-   area=$(curl -6 -s https://www.youtube.com/red | sed 's/,/\n/g' | grep countryCode | cut -d '"' -f4)
+   area=$(curl --connect-timeout 10 -6s https://www.youtube.com/red | sed 's/,/\n/g' | grep countryCode | cut -d '"' -f4)
 if [ ! -n "$area" ]; then
     area=不显示
 fi
@@ -107,7 +107,10 @@ echo -e "\033[32m你的油管角标: ${area}\033[0m";
 }
 
 steam_v4(){
-   area=$(curl -s https://store.steampowered.com/app/761830 | grep priceCurrency | cut -d '"' -f4)
+   area=$(curl --connect-timeout 10 -s https://store.steampowered.com/app/761830 | grep priceCurrency | cut -d '"' -f4)
+   if [ ! -n "$area" ]; then
+    echo -e "\033[31m错误！无法获取到货币数据\033[31m";
+fi
    echo -e "\033[32m你的 STEAM 货币为（仅限IPV4）: ${area}\033[0m";
 
 }
@@ -115,7 +118,7 @@ steam_v4(){
 
 #目录
 
-echo -e "\033[36m 测试脚本 V2.6 \033[0m"
+echo -e "\033[36m 测试脚本 V2.7 \033[0m"
 echo -e "\033[36m GitHub：https://github.com/xb0or/nftest \033[0m"
 echo -e "\033[36m bash <(curl -sSL "https://raw.githubusercontent.com/xb0or/nftest/main/netflix.sh") \033[0m"
 
