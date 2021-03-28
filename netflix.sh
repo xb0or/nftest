@@ -96,8 +96,9 @@ echo -e "YouTube：";
    area=$(curl --connect-timeout 10 -4s https://www.youtube.com/red | sed 's/,/\n/g' | grep countryCode | cut -d '"' -f4)
 if [ ! -n "$area" ]; then
     echo -e "${Font_Yellow}你的油管角标不显示 可能不支持Premium${Font_Suffix}";
-fi
+else
 echo -e "${Font_Green}你的油管角标: ${area}${Font_Suffix}";
+fi
 }
 yt_ipv6(){
 echo -e "YouTube：";
@@ -105,8 +106,9 @@ echo -e "YouTube：";
    area=$(curl --connect-timeout 10 -6s https://www.youtube.com/red | sed 's/,/\n/g' | grep countryCode | cut -d '"' -f4)
 if [ ! -n "$area" ]; then
 echo -e "${Font_Yellow}你的油管角标不显示 可能不支持Premium${Font_Suffix}";    
-fi
+else
 echo -e "${Font_Green}你的油管角标: ${area}${Font_Suffix}";
+fi
 }
 
 steam_v4(){
@@ -114,51 +116,50 @@ echo -e "Steam：";
    area=$(curl --connect-timeout 10 -s https://store.steampowered.com/app/761830 | grep priceCurrency | cut -d '"' -f4)
    if [ ! -n "$area" ]; then
     echo -e "${Font_Red}错误！无法获取到货币数据${Font_Suffix}";
-fi
+else
    echo -e "${Font_Green}你的 STEAM 货币为（仅限IPV4）: ${area}${Font_Suffix}";
-
+fi
 }
 DisneyPlus_v4() {
 echo -e "DisneyPlus：";
     local result=`curl --connect-timeout 10 -4sSL "https://www.disneyplus.com/movies/drain-the-titanic/5VNZom2KYtlb" 2>&1`;    
     if [[ "$result" == "curl"* ]];then
-        echo -n -e "\r DisneyPlus:\t\t\t\t${Font_Red}错误，无法连接到迪士尼+${Font_Suffix}\n";
+        echo -n -e "${Font_Red}错误，无法连接到迪士尼+${Font_Suffix}\n";
         return;
     fi
     
     if [[ "$result" == *"https://preview.disneyplus.com/unavailable/"* ]];then
-        echo -n -e "\r DisneyPlus:\t\t\t\t${Font_Red}抱歉，您所在的地区无法使用迪士尼+${Font_Suffix}\n";
+        echo -n -e "${Font_Red}抱歉，您所在的地区无法使用迪士尼+${Font_Suffix}\n";
         return;
     fi
     
     if [[ "$result" == *"releaseYear"* ]];then
-        echo -n -e "\r DisneyPlus:\t\t\t\t${Font_Green}恭喜，你的IP支持迪士尼+${Font_Suffix}\n";
+        echo -n -e "${Font_Green}恭喜，你的IP支持迪士尼+${Font_Suffix}\n";
         return;
     fi
-echo -n -e "\r YouTube Region:\t\t\t${Font_Red}很遗憾 你的IP不支持 DisneyPlus${Font_Suffix}\n";    
+echo -n -e "\r ${Font_Red}很遗憾 你的IP不支持 DisneyPlus${Font_Suffix}\n";    
     return;
 }
 
 DisneyPlus_v6() {
 echo -e "DisneyPlus：";
-    echo -n -e " DisneyPlus:\t\t\t\t->\c";
-    local result=`curl -${1} --user-agent "${UA_Browser}" -sSL "https://www.disneyplus.com/movies/drain-the-titanic/5VNZom2KYtlb" 2>&1`;
+    local result=`curl --connect-timeout 10 -4sSL "https://www.disneyplus.com/movies/drain-the-titanic/5VNZom2KYtlb" 2>&1`;
     
     if [[ "$result" == "curl"* ]];then
-        echo -n -e "\r DisneyPlus:\t\t\t\t${Font_Red}错误，无法连接到迪士尼+${Font_Suffix}\n";
+        echo -n -e "${Font_Red}错误，无法连接到迪士尼+${Font_Suffix}\n";
         return;
     fi
     
     if [[ "$result" == *"https://preview.disneyplus.com/unavailable/"* ]];then
-        echo -n -e "\r DisneyPlus:\t\t\t\t${Font_Red}抱歉，您所在的地区无法使用迪士尼+${Font_Suffix}\n";
+        echo -n -e "${Font_Red}抱歉，您所在的地区无法使用迪士尼+${Font_Suffix}\n";
         return;
     fi
     
     if [[ "$result" == *"releaseYear"* ]];then
-        echo -n -e "\r DisneyPlus:\t\t\t\t${Font_Green}恭喜，你的IP支持迪士尼+${Font_Suffix}\n";
+        echo -n -e "${Font_Green}恭喜，你的IP支持迪士尼+${Font_Suffix}\n";
         return;
     fi
-echo -n -e "\r YouTube Region:\t\t\t${Font_Red}很遗憾，你的IP不支持迪士尼+${Font_Suffix}\n"; 
+echo -n -e "\r ${Font_Red}很遗憾，你的IP不支持迪士尼+${Font_Suffix}\n"; 
     return;
 }
 
