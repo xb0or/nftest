@@ -143,7 +143,7 @@ echo -n -e "\r ${Font_Red}很遗憾，你的IP不支持迪士尼+${Font_Suffix}\
 
 DisneyPlus_v6() {
 echo -e "DisneyPlus：";
-    local result=`curl --connect-timeout 10 -4sSL "https://www.disneyplus.com/movies/drain-the-titanic/5VNZom2KYtlb" 2>&1`;
+    local result=`curl --connect-timeout 10 -6sSL "https://www.disneyplus.com/movies/drain-the-titanic/5VNZom2KYtlb" 2>&1`;
     
     if [[ "$result" == "curl"* ]];then
         echo -n -e "${Font_Red}错误，无法连接到迪士尼+${Font_Suffix}\n";
@@ -163,6 +163,28 @@ echo -n -e "\r ${Font_Red}很遗憾，你的IP不支持迪士尼+${Font_Suffix}\
     return;
 }
 
+#DAZN
+DAZN(){
+echo -e "DAZN：";
+    local result=`curl --connect-timeout 10 -4sSL "https://www.dazn.com/" 2>&1`;
+    
+    if [[ "$result" == "curl"* ]];then
+        echo -n -e "${Font_Red}错误，无法连接到DAZN${Font_Suffix}\n";
+        return;
+    fi
+    
+    if [[ "$result" == *"https://www.dazn.com/en-GLOBAL/l/dazn-is-not-available/"* ]];then
+        echo -n -e "${Font_Red}抱歉，您所在的地区无法使用DAZN${Font_Suffix}\n";
+        return;
+    fi
+    
+    if [[ "$result" == *"releaseYear"* ]];then
+        echo -n -e "${Font_Green}恭喜，你的IP支持DAZN${Font_Suffix}\n";
+        return;
+    fi
+echo -n -e "\r ${Font_Red}很遗憾，你的IP不支持DAZN${Font_Suffix}\n"; 
+    return;
+}
 #目录
 
 echo -e "\033[36m 测试脚本 V2.8 \033[0m"
