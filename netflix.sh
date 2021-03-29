@@ -155,7 +155,7 @@ echo -e "DisneyPlus：";
         return;
     fi
     
-    if [[ "$result" == *"releaseYear"* ]];then
+    if [[ "$result" == *"genre"* ]];then
         echo -n -e "${Font_Green}恭喜，你的IP支持迪士尼+${Font_Suffix}\n";
         return;
     fi
@@ -165,7 +165,7 @@ echo -n -e "\r ${Font_Red}很遗憾，你的IP不支持迪士尼+${Font_Suffix}\
 
 #目录
 
-echo -e "\033[36m 测试脚本 V2.8 \033[0m"
+echo -e "\033[36m 测试脚本 V2.9 \033[0m"
 echo -e "\033[36m GitHub：https://github.com/xb0or/nftest \033[0m"
 echo -e "\033[36m bash <(curl -sSL "https://raw.githubusercontent.com/xb0or/nftest/main/netflix.sh") \033[0m"
 
