@@ -133,7 +133,7 @@ echo -e "DisneyPlus：";
         return;
     fi
     
-    if [[ "$result" == *"release Year"* ]];then
+    if [[ "$result" == *"release_year"* ]];then
         echo -n -e "${Font_Green}恭喜，你的IP支持迪士尼+${Font_Suffix}\n";
         return;
     fi
@@ -155,7 +155,7 @@ echo -e "DisneyPlus：";
         return;
     fi
     
-    if [[ "$result" == *"release Year"* ]];then
+    if [[ "$result" == *"release_year"* ]];then
         echo -n -e "${Font_Green}恭喜，你的IP支持迪士尼+${Font_Suffix}\n";
         return;
     fi
