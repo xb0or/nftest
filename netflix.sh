@@ -122,7 +122,7 @@ fi
 }
 DisneyPlus_v4() {
 echo -e "DisneyPlus：";
-    local result=`curl --connect-timeout 10 -4sSL "https://www.disneyplus.com/movies/drain-the-titanic/5VNZom2KYtlb" 2>&1`;    
+    local result=`curl --connect-timeout 20 -4sSL "https://www.disneyplus.com/movies/drain-the-titanic/5VNZom2KYtlb" 2>&1`;    
     if [[ "$result" == "curl"* ]];then
         echo -n -e "${Font_Red}错误，无法连接到迪士尼+${Font_Suffix}\n";
         return;
@@ -143,7 +143,7 @@ echo -n -e "\r ${Font_Red}很遗憾，你的IP不支持迪士尼+${Font_Suffix}\
 
 DisneyPlus_v6() {
 echo -e "DisneyPlus：";
-    local result=`curl --connect-timeout 10 -6sSL "https://www.disneyplus.com/movies/drain-the-titanic/5VNZom2KYtlb" 2>&1`;
+    local result=`curl --connect-timeout 20 -6sSL "https://www.disneyplus.com/movies/drain-the-titanic/5VNZom2KYtlb" 2>&1`;
     
     if [[ "$result" == "curl"* ]];then
         echo -n -e "${Font_Red}错误，无法连接到迪士尼+${Font_Suffix}\n";
