@@ -128,12 +128,15 @@ echo -e "DisneyPlus：";
         return;
     fi
     
+    if [[ "$result" == *"https://www.disneyplus.com/service-unavailable"* ]];then
+        echo -n -e "${Font_Red}抱歉，您所在的地区无法使用迪士尼+${Font_Suffix}\n";
+        return;
+    fi
     if [[ "$result" == *"https://preview.disneyplus.com/unavailable/"* ]];then
         echo -n -e "${Font_Red}抱歉，您所在的地区无法使用迪士尼+${Font_Suffix}\n";
         return;
     fi
-    
-    if [[ "$result" == *"Release year"* ]];then
+    if [[ "$result" == *"rating"* ]];then
         echo -n -e "${Font_Green}恭喜，你的IP支持迪士尼+${Font_Suffix}\n";
         return;
     fi
@@ -150,12 +153,16 @@ echo -e "DisneyPlus：";
         return;
     fi
     
+    if [[ "$result" == *"https://www.disneyplus.com/service-unavailable"* ]];then
+        echo -n -e "${Font_Red}抱歉，您所在的地区无法使用迪士尼+${Font_Suffix}\n";
+        return;
+    fi
     if [[ "$result" == *"https://preview.disneyplus.com/unavailable/"* ]];then
         echo -n -e "${Font_Red}抱歉，您所在的地区无法使用迪士尼+${Font_Suffix}\n";
         return;
     fi
     
-    if [[ "$result" == *"Release year"* ]];then
+    if [[ "$result" == *"rating"* ]];then
         echo -n -e "${Font_Green}恭喜，你的IP支持迪士尼+${Font_Suffix}\n";
         return;
     fi
