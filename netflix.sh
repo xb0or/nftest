@@ -226,7 +226,7 @@ echo -e "Dazn：";
 
 #目录
 
-echo -e "${Font_SkyBlue} 测试脚本 V3.0 ${Font_Suffix}"
+echo -e "${Font_SkyBlue} 流媒体测试脚本 V3.0 ${Font_Suffix}"
 echo -e "${Font_SkyBlue} GitHub：https://github.com/xb0or/nftest ${Font_Suffix}"
 echo -e "${Font_SkyBlue} bash <(curl -sSL "https://raw.githubusercontent.com/xb0or/nftest/main/netflix.sh") ${Font_Suffix}"
 echo -e "${Font_SkyBlue} 国家代码：http://www.loglogo.com/front/countryCode/ ${Font_Suffix}"
@@ -241,9 +241,8 @@ yt_ipv4
 steam_v4
 DisneyPlus_v4
 Dazn_v4
-echo "-------------------------------------"
 fi
-echo "-------------------------------------"
+echo "====================================="
 echo " ** 正在测试 IPv6 解锁情况";
 check6=`ping6 240c::6666 -c 1 2>&1`;
 if [[ "$check6" != *"received"* ]] && [[ "$check6" != *"transmitted"* ]];then
