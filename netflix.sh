@@ -172,7 +172,7 @@ echo -n -e "\r ${Font_Red}很遗憾，你的IP不支持迪士尼+${Font_Suffix}\
 
 Dazn_v4() {
 echo -e "Dazn：";
-    local result=$(curl -4 -s --max-time 30 -X POST -H "Content-Type: application/json" -d '{"LandingPageKey":"generic","Languages":"zh-CN,zh,en","Platform":"web","PlatformAttributes":{},"Manufacturer":"","PromoCode":"","Version":"2"}' https://startup.core.indazn.com/misl/v5/Startup  | python -m json.tool 2> /dev/null |grep GeolocatedCountryName |cut -d '"' -f4);
+    local result=$(curl -4 -s --max-time 30 -X POST -H "Content-Type: application/json" -d '{"LandingPageKey":"generic","Languages":"zh-CN,zh,en","Platform":"web","PlatformAttributes":{},"Manufacturer":"","PromoCode":"","Version":"2"}' https://startup.core.indazn.com/misl/v5/Startup  | python -m json.tool 2> /dev/null |grep GeolocatedCountryName |cut -d '"' -f4)
 
 	if [[ "$result" == "curl"* ]];then
         	echo -n -e "${Font_Red}错误，无法连接到Dazn!${Font_Suffix}\n"
@@ -197,7 +197,7 @@ echo -e "Dazn：";
 
 Dazn_v6() {
 echo -e "Dazn：";
-    local result=$(curl -6 -s --max-time 30 -X POST -H "Content-Type: application/json" -d '{"LandingPageKey":"generic","Languages":"zh-CN,zh,en","Platform":"web","PlatformAttributes":{},"Manufacturer":"","PromoCode":"","Version":"2"}' https://startup.core.indazn.com/misl/v5/Startup  | python -m json.tool 2> /dev/null |grep GeolocatedCountryName |cut -d '"' -f4);
+    local result=$(curl -6 -s --max-time 30 -X POST -H "Content-Type: application/json" -d '{"LandingPageKey":"generic","Languages":"zh-CN,zh,en","Platform":"web","PlatformAttributes":{},"Manufacturer":"","PromoCode":"","Version":"2"}' https://startup.core.indazn.com/misl/v5/Startup  | python -m json.tool 2> /dev/null |grep GeolocatedCountryName |cut -d '"' -f4)
 
 	if [[ "$result" == "curl"* ]];then
         	echo -n -e "${Font_Red}错误，无法连接到Dazn!${Font_Suffix}\n"
