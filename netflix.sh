@@ -154,11 +154,11 @@ echo -e "DisneyPlus：";
     fi
     
     if [[ "$result" == *"https://www.disneyplus.com/service-unavailable"* ]];then
-        echo -n -e "${Font_Red}抱歉，您所在的地区无法使用迪士尼+${Font_Suffix}\n";
+        echo -n -e "${Font_Red}抱歉，您服务器所在的地区无法使用迪士尼+${Font_Suffix}\n";
         return;
     fi
     if [[ "$result" == *"https://preview.disneyplus.com/unavailable/"* ]];then
-        echo -n -e "${Font_Red}抱歉，您所在的地区无法使用迪士尼+${Font_Suffix}\n";
+        echo -n -e "${Font_Red}抱歉，您服务器所在的地区无法使用迪士尼+${Font_Suffix}\n";
         return;
     fi
     
@@ -170,9 +170,61 @@ echo -n -e "\r ${Font_Red}很遗憾，你的IP不支持迪士尼+${Font_Suffix}\
     return;
 }
 
+Dazn_v4() {
+    local result=$(curl -4 -s --max-time 30 -X POST -H "Content-Type: application/json" -d '{"LandingPageKey":"generic","Languages":"zh-CN,zh,en","Platform":"web","PlatformAttributes":{},"Manufacturer":"","PromoCode":"","Version":"2"}' https://startup.core.indazn.com/misl/v5/Startup  | python -m json.tool 2> /dev/null | grep GeolocatedCountryName | awk '{print $2}' | cut -f2 -d'"');
+    
+	if [[ "$result" == "curl"* ]];then
+        	echo -n -e "${Font_Red}错误，无法连接到Dazn!${Font_Suffix}\n"
+        	return;
+    	fi
+	
+	if [ -n "$result" ]; then
+		if [[ "$result" == "null," ]];then
+			echo -n -e "${Font_Red}抱歉，您服务器所在的地区无法使用Dazn!${Font_Suffix}\n"
+			return;
+        else
+			echo -n -e "${Font_Green}恭喜，你服务器的IP支持Dazn! 区域：[${result}]${Font_Suffix}\n"
+			return;
+		fi
+	else
+		echo -n -e "\${Font_Red}很遗憾，你的IP不支持Dazn!${Font_Suffix}\n"
+		return;
+
+    fi
+    return;
+}
+
+Dazn_v6() {
+    local result=$(curl -6 -s --max-time 30 -X POST -H "Content-Type: application/json" -d '{"LandingPageKey":"generic","Languages":"zh-CN,zh,en","Platform":"web","PlatformAttributes":{},"Manufacturer":"","PromoCode":"","Version":"2"}' https://startup.core.indazn.com/misl/v5/Startup  | python -m json.tool 2> /dev/null | grep GeolocatedCountryName | awk '{print $2}' | cut -f2 -d'"');
+    
+	if [[ "$result" == "curl"* ]];then
+        	echo -n -e "${Font_Red}错误，无法连接到Dazn!${Font_Suffix}\n"
+        	return;
+    	fi
+	
+	if [ -n "$result" ]; then
+		if [[ "$result" == "null," ]];then
+			echo -n -e "${Font_Red}抱歉，您服务器所在的地区无法使用Dazn!${Font_Suffix}\n"
+			return;
+        else
+			echo -n -e "${Font_Green}恭喜，你服务器的IP支持Dazn! 区域：[${result}]${Font_Suffix}\n"
+			return;
+		fi
+	else
+		echo -n -e "\${Font_Red}很遗憾，你的IP不支持Dazn!${Font_Suffix}\n"
+		return;
+
+    fi
+    return;
+}
+
+
+
+
+
 #目录
 
-echo -e "${Font_SkyBlue} 测试脚本 V2.9 ${Font_Suffix}"
+echo -e "${Font_SkyBlue} 测试脚本 V3.0 ${Font_Suffix}"
 echo -e "${Font_SkyBlue} GitHub：https://github.com/xb0or/nftest ${Font_Suffix}"
 echo -e "${Font_SkyBlue} bash <(curl -sSL "https://raw.githubusercontent.com/xb0or/nftest/main/netflix.sh") ${Font_Suffix}"
 echo -e "${Font_SkyBlue} 国家代码：http://www.loglogo.com/front/countryCode/ ${Font_Suffix}"
@@ -186,6 +238,8 @@ test_ipv4
 yt_ipv4
 steam_v4
 DisneyPlus_v4
+Dazn_v4
+echo "-------------------------------------"
 fi
 echo "-------------------------------------"
 echo " ** 正在测试 IPv6 解锁情况";
@@ -197,4 +251,6 @@ else
     test_ipv6
     yt_ipv6
     DisneyPlus_v6
+    Dazn_v6
+    echo "-------------------------------------"
 fi
