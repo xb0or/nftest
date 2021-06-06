@@ -23,3 +23,4 @@ Steam货币判断
 ```
 bash <(curl -sSL "https://raw.githubusercontent.com/xb0or/nftest/main/netflix.sh")
 ```
+ 区域代码看不懂的可以参考：[](http://www.loglogo.com/front/countryCode/)
