@@ -8,7 +8,7 @@ Disneyplus判断
 
 Dazn解锁判断
 
-（以上来源RegionRestrictionCheck](https://github.com/lmc999/RegionRestrictionCheck)）
+（以上来源[RegionRestrictionCheck](https://github.com/lmc999/RegionRestrictionCheck)）
 
 YouTube解锁地区以及是否支持会员判断
 
