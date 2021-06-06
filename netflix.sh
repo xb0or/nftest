@@ -188,7 +188,7 @@ echo -e "Dazn：";
 			return;
 		fi
 	else
-		echo -n -e "\${Font_Red}很遗憾，你的IP不支持Dazn!${Font_Suffix}\n"
+		echo -n -e "${Font_Red}很遗憾，你的IP不支持Dazn!${Font_Suffix}\n"
 		return;
 
     fi
@@ -213,7 +213,7 @@ echo -e "Dazn：";
 			return;
 		fi
 	else
-		echo -n -e "\${Font_Red}很遗憾，你的IP不支持Dazn!${Font_Suffix}\n"
+		echo -n -e "${Font_Red}很遗憾，你的IP不支持Dazn!${Font_Suffix}\n"
 		return;
 
     fi
