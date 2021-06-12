@@ -120,55 +120,6 @@ else
    echo -e "${Font_Green}你的 STEAM 货币为（仅限IPV4）: ${area}${Font_Suffix}";
 fi
 }
-DisneyPlus_v4() {
-echo -e "DisneyPlus：";
-    local result=`curl --connect-timeout 20 -4sSL "https://www.disneyplus.com/movies/drain-the-titanic/5VNZom2KYtlb" 2>&1`;    
-    if [[ "$result" == "curl"* ]];then
-        echo -n -e "${Font_Red}错误，无法连接到迪士尼+${Font_Suffix}\n";
-        return;
-    fi
-    
-    if [[ "$result" == *"https://www.disneyplus.com/service-unavailable"* ]];then
-        echo -n -e "${Font_Red}抱歉，您所在的地区无法使用迪士尼+${Font_Suffix}\n";
-        return;
-    fi
-    if [[ "$result" == *"https://preview.disneyplus.com/unavailable/"* ]];then
-        echo -n -e "${Font_Red}抱歉，您所在的地区无法使用迪士尼+${Font_Suffix}\n";
-        return;
-    fi
-    if [[ "$result" == *"rating"* ]];then
-        echo -n -e "${Font_Green}恭喜，你的IP支持迪士尼+${Font_Suffix}\n";
-        return;
-    fi
-echo -n -e "\r ${Font_Red}很遗憾，你的IP不支持迪士尼+${Font_Suffix}\n";
-    return;
-}
-
-DisneyPlus_v6() {
-echo -e "DisneyPlus：";
-    local result=`curl --connect-timeout 20 -6sSL "https://www.disneyplus.com/movies/drain-the-titanic/5VNZom2KYtlb" 2>&1`;
-    
-    if [[ "$result" == "curl"* ]];then
-        echo -n -e "${Font_Red}错误，无法连接到迪士尼+${Font_Suffix}\n";
-        return;
-    fi
-    
-    if [[ "$result" == *"https://www.disneyplus.com/service-unavailable"* ]];then
-        echo -n -e "${Font_Red}抱歉，您服务器所在的地区无法使用迪士尼+${Font_Suffix}\n";
-        return;
-    fi
-    if [[ "$result" == *"https://preview.disneyplus.com/unavailable/"* ]];then
-        echo -n -e "${Font_Red}抱歉，您服务器所在的地区无法使用迪士尼+${Font_Suffix}\n";
-        return;
-    fi
-    
-    if [[ "$result" == *"rating"* ]];then
-        echo -n -e "${Font_Green}恭喜，你的IP支持迪士尼+${Font_Suffix}\n";
-        return;
-    fi
-echo -n -e "\r ${Font_Red}很遗憾，你的IP不支持迪士尼+${Font_Suffix}\n"; 
-    return;
-}
 
 Dazn_v4() {
 echo -e "Dazn：";
@@ -239,7 +190,6 @@ else
 test_ipv4
 yt_ipv4
 steam_v4
-DisneyPlus_v4
 Dazn_v4
 fi
 echo "====================================="
@@ -251,7 +201,6 @@ echo "-------------------------------------"
 else
     test_ipv6
     yt_ipv6
-    DisneyPlus_v6
     Dazn_v6
     echo "-------------------------------------"
 fi
