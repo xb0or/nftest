@@ -13,9 +13,14 @@ Dazn解锁判断
 
 YouTube解锁地区以及是否支持会员判断
 
-Steam货币判断
 
+Steam货币判断
 （以上是自己写的(^人^) 信不信有你）
+
+
+OpenAI解锁判断
+（以上来源[missuo/OpenAI-Checker](https://github.com/missuo/OpenAI-Checker)）
+
 
 ## 使用方法
 
