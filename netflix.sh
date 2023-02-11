@@ -200,7 +200,7 @@ echo -e "[IPv4]"
 			echo -e "${RED}地区: ${iso2_code4}. 目前不支持 OpenAI。${PLAIN}"
 		fi
 	fi
-	echo "-------------------------------------"
+fi
 }
 
 openai_v6() {
@@ -225,7 +225,6 @@ echo -e "[IPv6]"
 			echo -e "${RED}地区: ${iso2_code6}. 目前不支持 OpenAI。${PLAIN}"
 		fi
 	fi
-	echo "-------------------------------------"
 fi
 }
 
