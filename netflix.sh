@@ -183,15 +183,11 @@ if [[ $(curl -sS https://chat.openai.com/ -I | grep "text/plain") != "" ]]
 then
 	echo "您的 IP 已被封锁!"
 else
-echo -e "[IPv4]"
+echo -e "OpenAI:"
 	check4=`ping 1.1.1.1 -c 1 2>&1`;
 	if [[ "$check4" != *"received"* ]] && [[ "$check4" != *"transmitted"* ]];then
 		echo -e "\033[34mIPv4 is not supported on the current host. Skip...\033[0m";
 	else
-		local_ipv4=$(curl -4 -s --max-time 10 api64.ipify.org)
-		local_isp4=$(curl -s -4 --max-time 10  --user-agent "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.87 Safari/537.36" "https://api.ip.sb/geoip/${local_ipv4}" | grep organization | cut -f4 -d '"')
-		#local_asn4=$(curl -s -4 --max-time 10  --user-agent "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.87 Safari/537.36" "https://api.ip.sb/geoip/${local_ipv4}" | grep asn | cut -f8 -d ',' | cut -f2 -d ':')
-		echo -e "${BLUE}您的 IPv4: ${local_ipv4} - ${local_isp4}${PLAIN}"
 		iso2_code4=$(curl -4 -sS https://chat.openai.com/cdn-cgi/trace | grep "loc=" | awk -F= '{print $2}')
 		if [[ "${SUPPORT_COUNTRY[@]}"  =~ "${iso2_code4}" ]]; 
 		then
@@ -208,15 +204,11 @@ if [[ $(curl -sS https://chat.openai.com/ -I | grep "text/plain") != "" ]]
 then
 	echo "您的 IP 已被封锁!"
 else
-echo -e "[IPv6]"
+echo -e "OpenAI:"
 	check6=`ping6 240c::6666 -c 1 2>&1`;
 	if [[ "$check6" != *"received"* ]] && [[ "$check6" != *"transmitted"* ]];then
 		echo -e "\033[34m当前主机不支持 IPv6。 跳过...\033[0m";    
 	else
-		local_ipv6=$(curl -6 -s --max-time 20 api64.ipify.org)
-		local_isp6=$(curl -s -6 --max-time 10 --user-agent "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.87 Safari/537.36" "https://api.ip.sb/geoip/${local_ipv6}" | grep organization | cut -f4 -d '"')
-		#local_asn6=$(curl -s -6 --max-time 10  --user-agent "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.87 Safari/537.36" "https://api.ip.sb/geoip/${local_ipv6}" | grep asn | cut -f8 -d ',' | cut -f2 -d ':')
-		echo -e "${BLUE}您的 IPv6: ${local_ipv6} - ${local_isp6}${PLAIN}"
 		iso2_code6=$(curl -6 -sS https://chat.openai.com/cdn-cgi/trace | grep "loc=" | awk -F= '{print $2}')
 		if [[ "${SUPPORT_COUNTRY[@]}"  =~ "${iso2_code6}" ]]; 
 		then
@@ -231,7 +223,7 @@ fi
 
 #目录
 
-echo -e "${Font_SkyBlue} 流媒体测试脚本 V3.0 ${Font_Suffix}"
+echo -e "${Font_SkyBlue} 流媒体测试脚本 V4.0 ${Font_Suffix}"
 echo -e "${Font_SkyBlue} GitHub：https://github.com/xb0or/nftest ${Font_Suffix}"
 echo -e "${Font_SkyBlue} bash <(curl -sSL "https://raw.githubusercontent.com/xb0or/nftest/main/netflix.sh") ${Font_Suffix}"
 echo -e "${Font_SkyBlue} 国家代码：http://www.loglogo.com/front/countryCode/ ${Font_Suffix}"
@@ -241,6 +233,9 @@ check4=`ping 1.1.1.1 -c 1 2>&1`;
 if [[ "$check4" != *"received"* ]] && [[ "$check4" != *"transmitted"* ]];then
     echo -e "\033[34m当前主机不支持IPv4,跳过...\033[0m";
 else
+    local_ipv4=$(curl -4 -s --max-time 10 api64.ipify.org)
+    local_isp4=$(curl -s -4 --max-time 10  --user-agent "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.87 Safari/537.36" "https://api.ip.sb/geoip/${local_ipv4}" | grep organization | cut -f4 -d '"')
+    echo -e "${BLUE}您的 IPv4: ${local_ipv4} - ${local_isp4}${PLAIN}"
 test_ipv4
 yt_ipv4
 steam_v4
@@ -254,6 +249,9 @@ if [[ "$check6" != *"received"* ]] && [[ "$check6" != *"transmitted"* ]];then
 echo -e "\033[34m当前主机不支持IPv6,跳过...\033[0m";    
 echo "-------------------------------------"
 else
+		local_ipv6=$(curl -6 -s --max-time 20 api64.ipify.org)
+		local_isp6=$(curl -s -6 --max-time 10 --user-agent "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.87 Safari/537.36" "https://api.ip.sb/geoip/${local_ipv6}" | grep organization | cut -f4 -d '"')
+                echo -e "${BLUE}您的 IPv6: ${local_ipv6} - ${local_isp6}${PLAIN}"
     test_ipv6
     yt_ipv6
     Dazn_v6
