@@ -179,11 +179,11 @@ echo -e "Dazn：";
 }
 
 openai_v4() {
+echo -e "OpenAI:"
 if [[ $(curl -sS https://chat.openai.com/ -I | grep "text/plain") != "" ]]
 then
 	echo "您的 IP 已被封锁!"
 else
-echo -e "OpenAI:"
 	check4=`ping 1.1.1.1 -c 1 2>&1`;
 	if [[ "$check4" != *"received"* ]] && [[ "$check4" != *"transmitted"* ]];then
 		echo -e "\033[34mIPv4 is not supported on the current host. Skip...\033[0m";
@@ -200,11 +200,12 @@ fi
 }
 
 openai_v6() {
+echo -e "OpenAI:"
 if [[ $(curl -sS https://chat.openai.com/ -I | grep "text/plain") != "" ]]
 then
 	echo "您的 IP 已被封锁!"
 else
-echo -e "OpenAI:"
+
 	check6=`ping6 240c::6666 -c 1 2>&1`;
 	if [[ "$check6" != *"received"* ]] && [[ "$check6" != *"transmitted"* ]];then
 		echo -e "\033[34m当前主机不支持 IPv6。 跳过...\033[0m";    
@@ -223,7 +224,7 @@ fi
 
 #目录
 
-echo -e "${Font_SkyBlue} 流媒体测试脚本 V4.0 ${Font_Suffix}"
+echo -e "${Font_SkyBlue} 流媒体测试脚本 V4.1 ${Font_Suffix}"
 echo -e "${Font_SkyBlue} GitHub：https://github.com/xb0or/nftest ${Font_Suffix}"
 echo -e "${Font_SkyBlue} bash <(curl -sSL "https://raw.githubusercontent.com/xb0or/nftest/main/netflix.sh") ${Font_Suffix}"
 echo -e "${Font_SkyBlue} 国家代码：http://www.loglogo.com/front/countryCode/ ${Font_Suffix}"
